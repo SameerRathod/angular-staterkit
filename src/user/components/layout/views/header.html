@@ -1,0 +1,103 @@
+<div class="row header" id="header">
+    <ul class="list-inline text-2" ng-init="imageErrorLogo=false">
+        <li style="margin-top: -10px;">
+            <div style="width: 100%;/*margin-left: 70%;*/font-weight: bold;font-size: 20px">
+
+            </div>
+
+
+        </li>
+        <li class="pull-right top-right-menu" style="margin-top:-12px">
+
+            <div class="" uib-dropdown dropdown-append-to="appendToEl" outsideClick="true">
+                <div class="" uib-dropdown-toggle ng-disabled="disabled" id="menu-workaround" ng-init="imageError=false">
+                    <!--<div ng-if=""-->
+                    <i class="fa fa-caret-down cp p-l-5 p-r-5 p-t-5 p-b-5 m-r-0 m-t-5"></i>
+                </div>
+
+                <ul uib-dropdown-menu class="ui-dropdown-custom-position-v2" style="left:-126px !important;">
+                    <div class="arrow-v2" style="right:16px !important;"></div>
+
+                    <li style="padding:10px" ui-sref="admin.profileManagement">
+                        <i class="fa fa-address-book"></i>
+                        <span>My Profile</span>
+                    </li>
+                    <!--
+                              <li style="padding:10px" ng-click="$Ctrl.changeLocation('/')">
+                                <i class="fa fa-user-circle-o"></i>
+                                <span>CSM Portal</span>
+                              </li>
+                     -->
+                    <li style="padding:10px" ui-sref="logout">
+                        <i class="fa fa-fw fa-power-off"></i>
+                        <span>Logout</span>
+                    </li>
+
+                </ul>
+
+            </div>
+        </li>
+
+        <li class="pull-right top-right-menu" style="margin-top:-10px !important;">
+            <p class="title-header">
+                {{user_name}}
+            </p>
+
+            <!-- <p class="subtext-header">
+                 {{csmTitle}}
+             </p>-->
+        </li>
+        <li class="pull-right top-right-menu" style="margin-top:-8px">
+      <span ng-if="$root.avatar_url && !imageError">
+        <img
+                ng-src="{{$root.avatar_url?$root.avatar_url:'http://localhost'}}"
+                on-error-src text-to-show="$root.user_name"
+                string="{{$root.user_name}}"
+                round-shape="true"
+                bind="true"
+                img-error="$parent.imageError"
+                max-length="2"
+                upper-case="true"
+                auto-color="true"
+                class="md-avatar cp theme-color img-circle pull-left" alt="" height="28px" width="28"/>
+      </span>
+            <span ng-if="!$root.avatar_url || imageError">
+
+        <img
+                ng-src="{{$root.avatar_url?$root.avatar_url:'http://localhost'}}"
+                on-error-src text-to-show="$root.user_name"
+                string="{{$root.user_name}}"
+                round-shape="true"
+                img-error="$parent.imageError"
+                bind="true"
+                max-length="2"
+                upper-case="true"
+                auto-color="true"
+                class="md-avatar cp theme-color img-circle pull-left" alt="" height="28px" width="28"/>
+      </span>
+        </li>
+
+
+    </ul>
+</div>
+
+<div class="s4-logo oh" >
+
+    <!--<img src="/static/images/mylogo.png" class="logo-mini" style="width: 155px;margin-top: 10px;">-->
+    <div style="font-weight: bold;font-size: 20px;">
+        <p>
+            Decision<span class="legend5">HUB
+       </span>
+        </p></div>
+
+
+</div>
+
+
+<div class="menubar-toggle-c bdr-b-1 p-t-10">
+    <a class="btn btn-icon
+  -toggle menubar-toggle" menu-toggle data-toggle="menubar" href="javascript:void(0);">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+

@@ -1,0 +1,96 @@
+<div class="sidebar-nav" style="">
+
+
+    <ul class="list-unstyled menu-list">
+
+        <li class="pr" ng-class="{'selected' : $root.selectedTab=='{{item.tabName}}' || item.submenutabs.indexOf($root.selectedTab) != -1}"
+            ng-mouseleave="$Ctrl.mouseleave(item, $Ctrl.menubar)"
+            ng-mouseover="$Ctrl.mouseover(item, $Ctrl.menubar)"
+
+            ng-repeat="item in $Ctrl.menubar | filter: $Ctrl.checkRole"
+            style="border-bottom:0px !important;">
+            <!--ng-if="$Ctrl.checkRole(item.permitted)"-->
+            <!--<span class="menu-icon" ui-sref="{{item.state}}"-->
+            <!--style="float: left;margin-right: 10px !important;">-->
+            <!---->
+            <!--</span>-->
+            <a
+                    class="menu-txt item-portfolio nav-link"
+                    ng-if="!item.href" style="text-align: left; "
+                    ui-sref="{{item.state}}">
+                <i class="fa {{item.icon}} nav-icon" ng-if="!item.hasOwnProperty('type')"></i>
+                <p class="sm" ng-bind-html="item.type" ng-if="item.hasOwnProperty('type')"></p>{{item.name}}
+            </a>
+            <a
+                    class="menu-txt item-portfolio nav-link"
+                    href="{{item.state}}" ng-if="item.href" style="text-align: left; "
+                    target="_blank">
+                <i class="fa {{item.icon}} nav-icon" ng-if="!item.hasOwnProperty('type')"></i>
+                <p class="sm" ng-bind-html="item.type" ng-if="item.hasOwnProperty('type')"></p>{{item.name}}
+            </a>
+
+            <ul class="list-unstyled sub-menu-list pa" ng-show="item.isOpen && item.submenu.length"
+                style="width: 160px !important;">
+
+                <li class="pr"
+                    ng-class="{'selected' : $root.selectedTab=='{{subitem.tabName}}'}"
+                    ng-mouseleave="$Ctrl.mouseleave(subitem,  item.submenu)"
+                    ng-mouseover="$Ctrl.mouseover(subitem,  item.submenu)"
+                    ng-repeat="subitem in item.submenu">
+
+
+                    <!--<div class="menu-icon" ui-sref="{{subitem.state}}"-->
+                    <!--style="float: left;margin-left: 20px !important;margin-right: 10px !important;margin-top: -4px !important;">-->
+                    <!---->
+                    <!--</div>-->
+                    <a class="menu-txt item-portfolio nav-link"
+                       ng-if="!subitem.href"
+                       ui-sref="{{subitem.state}}" style="text-align:left;">
+                        <i class="fa {{subitem.icon}} nav-icon"></i>
+                        {{subitem.name}}
+                    </a>
+                    <a class="menu-txt item-portfolio nav-link"
+                       ng-if="subitem.href"
+                       href="{{subitem.state}}" target="_blank"
+                       style="text-align:left;">
+                        <i class="fa {{subitem.icon}} nav-icon"></i>
+                        {{subitem.name}}
+                    </a>
+                    <ul class="list-unstyled sub-menu-list pa" ng-show="subitem.isOpen && subitem.submenu.length">
+
+                        <li class=""
+                            ng-class="{'selected' : $root.selectedTab=='{{subitem.tabName}}'}"
+                            ng-click="$event.stopPropagation()"
+                            ng-mouseleave="$Ctrl.mouseleave(subitem,  subitem.submenu)"
+                            ng-mouseover="$Ctrl.mouseover(subitem,  subitem.submenu)"
+                            ng-repeat="subitem in subitem.submenu"
+                            ui-sref="{{subitem.state}}">
+
+
+                            <!--<div class="menu-icon" ui-sref="{{subitem.state}}">-->
+                            <!---->
+                            <!--</div>-->
+                            <a class="menu-txt item-portfolio nav-link">
+                                <span>{{subitem.name}}</span>
+                                <i class="fa {{subitem.icon}} nav-icon"></i>
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </li>
+
+    </ul>
+
+    <div class="company-logo-footer" style="">
+        <a href="https://decisionminds.com/">
+            <img class="logo-mini" src="/static/images/mylogo.png" style="width: 155px;"/>
+        </a>
+    </div>
+</div>
+

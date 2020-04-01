@@ -14,9 +14,9 @@ module.exports = function(grunt) {
                     },
                 },
                 files: {
-                    'user.build.js': ['src/components/user/**/*.js'],
-                    'admin.build.js':['src/components/admin/**/*.js'],
-                    'common.js':['js/**/*.js', ]
+                    'src/dist/user.build.js': ['src/user/**/*.js'],
+                    'src/dist/admin.build.js':['src/admin/**/*.js'],
+                    'src/dist/vendor.js':['js/**/*.js', ]
                 },
             },
             css:{
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['css/*','components/**/*'],
+            files: ['css/*','src/**/*'],
             tasks: ['concat'],
         },
     });

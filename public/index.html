@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="kraApp">
 <head>
     <meta charset="UTF-8">
     <title>KRA</title>
+    <script type="text/javascript" src="scripts/angular/angular.js"></script>
+
 </head>
-<body>
+<body >
 <h1>Performance review</h1>
 <div ui-view="headerView"></div>
 <div ui-view="sidebarView"></div>
 <div ui-view="mainContent"></div>
+<script type="text/javascript" src="scripts/angular-ui-router/release/angular-ui-router.js"></script>
+
+<script type="text/javascript" src="static/dist/user.build.js"></script>
 </body>
 </html>
+

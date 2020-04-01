@@ -1,39 +1,40 @@
-var app = angular.module('kra.user',[]);
-
-
-app.config(['$stateProvider',function ($stateProvider) {
+var app = angular.module('kraApp',[
+    'kra.user.layout',
+    'ui.router'
+])
+    .config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
+        $urlRouterProvider.otherwise("/");
     $stateProvider
-        .state('userindex', {
+        .state('user', {
             url: "/",
             views: {
-                "headerView@": {
+                "headerView": {
                     templateUrl: '/static/user/components/layout/views/header.html',
                     controller: 'layoutCtrl',
                     controllerAs: '$Ctrl'
 
                 },
-                "sidebarView@": {
+                "sidebarView": {
                     templateUrl: '/static/user/components/layout/views/sidebar.html',
-                    controller: 'loginCtrl',
+                    controller: 'layoutCtrl',
                     controllerAs: '$Ctrl'
 
                 },
-                "mainContent@": {
-                    controller: function ($scope, $state) {
-                        // $scope.currentNav = null;
-                        // $scope.childNav = null;
-                        //
-                        // if ($state.current.name == 'admin')
-                        //     $state.go("admin.dashboard");
-                    }
+                "mainContent": {
+                    templateUrl: '/static/user/components/layout/views/sidebar.html',
+
+                    controller: 'layoutCtrl',
+                    controllerAs: '$Ctrl'
                 }
-            },
-            resolve: {
-                authprovideradmin: function (AdminLoginService) {
-
-//          return AdminLoginService.getCurrentAuthProvider();
-                    return true;
-
+            }
+        })
+        .state('user.goals', {
+            url: "/goals",
+            views: {
+                "mainContent": {
+                    templateUrl: '/static/user/components/goals/views/goals.html',
+                    controller: 'goalsCtrl',
+                    controllerAs: '$Ctrl'
                 }
             }
         })

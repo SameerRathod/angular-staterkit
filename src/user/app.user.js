@@ -8,22 +8,22 @@ var app = angular.module('kraApp',[
         .state('user', {
             url: "/",
             views: {
-                "headerView": {
+                "headerView@": {
                     templateUrl: '/static/user/components/layout/views/header.html',
-                    controller: 'layoutCtrl',
+                    controller: 'layoutController',
                     controllerAs: '$Ctrl'
 
                 },
-                "sidebarView": {
+                "sidebarView@": {
                     templateUrl: '/static/user/components/layout/views/sidebar.html',
-                    controller: 'layoutCtrl',
+                    controller: 'layoutController',
                     controllerAs: '$Ctrl'
 
                 },
-                "mainContent": {
+                "mainContent@": {
                     templateUrl: '/static/user/components/layout/views/sidebar.html',
 
-                    controller: 'layoutCtrl',
+                    controller: 'layoutController',
                     controllerAs: '$Ctrl'
                 }
             }
@@ -31,9 +31,19 @@ var app = angular.module('kraApp',[
         .state('user.goals', {
             url: "/goals",
             views: {
-                "mainContent": {
+                "mainContent@": {
                     templateUrl: '/static/user/components/goals/views/goals.html',
-                    controller: 'goalsCtrl',
+                    controller: 'goalsController',
+                    controllerAs: '$Ctrl'
+                }
+            }
+        })
+        .state('user.goals', {
+            url: "/goals",
+            views: {
+                "mainContent@": {
+                    templateUrl: '/static/user/components/goals/views/add-goals.html',
+                    controller: 'goalsController',
                     controllerAs: '$Ctrl'
                 }
             }
